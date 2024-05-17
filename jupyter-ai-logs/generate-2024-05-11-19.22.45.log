@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\pydantic\v1\main.py", line 522, in parse_obj
+    obj = dict(obj)
+          ^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\output_parsers\pydantic.py", line 35, in _parse_obj
+    return self.pydantic_object.parse_obj(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\pydantic\v1\main.py", line 525, in parse_obj
+    raise ValidationError([ErrorWrapper(exc, loc=ROOT_KEY)], cls) from e
+pydantic.v1.error_wrappers.ValidationError: 1 validation error for Outline
+__root__
+  Outline expected dict not NoneType (type=type_error)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\base.py", line 125, in on_message
+    await self.process_message(message)
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 276, in process_message
+    final_path = await self._generate_notebook(prompt=message.body)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 252, in _generate_notebook
+    outline = await generate_outline(prompt, llm=self.llm, verbose=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 56, in generate_outline
+    outline = parser.parse(outline)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\output_parsers\pydantic.py", line 64, in parse
+    return super().parse(text)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\output_parsers\json.py", line 72, in parse
+    return self.parse_result([Generation(text=text)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\output_parsers\pydantic.py", line 61, in parse_result
+    return self._parse_obj(json_object)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\output_parsers\pydantic.py", line 42, in _parse_obj
+    raise self._parser_exception(e, obj)
+langchain_core.exceptions.OutputParserException: Failed to parse Outline from completion null. Got: 1 validation error for Outline
+__root__
+  Outline expected dict not NoneType (type=type_error)

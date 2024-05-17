@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\base.py", line 125, in on_message
+    await self.process_message(message)
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 276, in process_message
+    final_path = await self._generate_notebook(prompt=message.body)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 252, in _generate_notebook
+    outline = await generate_outline(prompt, llm=self.llm, verbose=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\jupyter_ai\chat_handlers\generate.py", line 55, in generate_outline
+    outline = await chain.apredict(description=description)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\llm.py", line 310, in apredict
+    return (await self.acall(kwargs, callbacks=callbacks))[self.output_key]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\_api\deprecation.py", line 157, in awarning_emitting_wrapper
+    return await wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\base.py", line 428, in acall
+    return await self.ainvoke(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\base.py", line 212, in ainvoke
+    raise e
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\base.py", line 203, in ainvoke
+    await self._acall(inputs, run_manager=run_manager)
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\llm.py", line 275, in _acall
+    response = await self.agenerate([inputs], run_manager=run_manager)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain\chains\llm.py", line 142, in agenerate
+    return await self.llm.agenerate_prompt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\language_models\llms.py", line 643, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\language_models\llms.py", line 1018, in agenerate
+    output = await self._agenerate_helper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\language_models\llms.py", line 882, in _agenerate_helper
+    raise e
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\language_models\llms.py", line 866, in _agenerate_helper
+    await self._agenerate(
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_core\language_models\llms.py", line 1336, in _agenerate
+    await self._acall(prompt, stop=stop, run_manager=run_manager, **kwargs)
+  File "C:\Users\relat\anaconda3\envs\jupyter-ai\Lib\site-packages\langchain_community\llms\together.py", line 194, in _acall
+    raise ValueError(
+ValueError: Together received an invalid payload: <bound method ClientResponse.text of <ClientResponse(https://api.together.xyz/inference) [404 Not Found]>
+<CIMultiDictProxy('Date': 'Thu, 09 May 2024 19:00:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'x-ratelimit-limit': '2', 'x-ratelimit-remaining': '1', 'x-ratelimit-reset': '2', 'Etag': 'W/"11gk4kxb1kl7g"', 'Vary': 'Accept-Encoding', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8813ef7abba1a745-IXC', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400')>
+>
